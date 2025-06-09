@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Добавить продажу</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-4">
+
+  <h1>Добавить продажу</h1>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="store_id" class="form-label">Магазин</label>
+      <select id="store_id" name="store_id" class="form-select" required>
+        {% for store in stores %}
+          <option value="{{ store._id }}">{{ store.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="employee_id" class="form-label">Сотрудник</label>
+      <select id="employee_id" name="employee_id" class="form-select" required>
+        {% for emp in employees %}
+          <option value="{{ emp._id }}">{{ emp.name }} {{ emp.surname }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="product_id" class="form-label">Продукт</label>
+      <select id="product_id" name="product_id" class="form-select" required>
+        {% for prod in products %}
+          <option value="{{ prod._id }}">{{ prod.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Количество</label>
+      <input type="number" id="quantity" name="quantity" min="1" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Дата продажи</label>
+      <input type="date" id="date" name="date" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
+  </form>
+
+  <a href="/" class="btn btn-link mt-3">Назад</a>
+</body>
+</html>
